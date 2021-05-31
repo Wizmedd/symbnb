@@ -1,0 +1,160 @@
+{% extends "base.html.twig" %}
+
+{% block style %}
+	<!-- Intro settings -->
+	<style>
+		/* Default height for small devices */
+		#intro-example {
+			height: 400px;
+		}
+
+		/* Height for devices larger than 992px */
+		@media(min-width: 992px) {
+			#intro-example {
+				height: 600px;
+			}
+		}
+	</style>
+{% endblock %}
+{% block title %}Homepage
+{% endblock %}
+
+{% block body %}
+
+
+	<div
+		class="container">
+
+		<!-- Background image -->
+		<div id="intro-example" class="bg-light p-5 rounded-lg m-3" style="background-size:cover; background-image: url('/images/masthead.jpg');">
+
+			<div class="bg-light p-5 rounded-lg m-3" style="" ;>
+				<h1 class="display-3">Faites vous une idée avant de vous déplacer.</h1>
+				<p class="lead">ImmoShow est une plateforme de mise en relation immobilière entre vendeurs et acheteurs.</p>
+				<hr class="my-4">
+				<p>
+
+					Survoler votre destination préférée et trouver votre futur logement</p>
+				<a class="btn btn-primary btn-lg" href="#" role="button">Voir nos annonces</a>
+			</div>
+
+			<div class="mask" style="background-color: rgba(0, 0, 0, 0.2);">
+				<div class="d-flex justify-content-center align-items-center h-100">
+					<div class="text-white">
+
+						<a class="btn btn-outline-light btn-lg m-3" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button" rel="nofollow" target="_blank">Voir la vidéo</a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Background image -->
+
+
+		<h2 class="h1 mb-3 mt-3">Nos Logements stars</h2>
+
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card bg-light mb-3">
+					<div class="card-header text-center">
+						Appartement, 145 m2, 5 chambres, Toulouse
+						<strong>290000€</strong>
+						<small>pas de commentaire</small>
+
+					</div>
+					<img src="http://place-hold.it/1000x400" alt="image du placehold" style="height: 200px; width:100%; display:block">
+
+					<div class="card-body">
+						<h4 class="card-title">Maison 145 m2 Esquirol, Toulouse</h4>
+						<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. At adipisci sed provident quis nam quibusdam neque asperiores dolorum laborum itaque.</p>
+						<a href="#" class="btn btn-secondary">En savoir plus</a>
+					</div>
+
+
+				</div>
+
+
+			</div>
+
+			<div class="col-md-4">
+				<div class="card bg-light mb-3">
+					<div class="card-header text-center">
+						Maison, 145 m2, 5 chambres, Toulouse
+						<strong>390000€</strong>
+					</br>
+					<small>pas de commentaire</small>
+
+				</div>
+				<img src="http://place-hold.it/1000x400" alt="image du placehold" style="height: 200px; width:100%; display:block">
+
+				<div class="card-body">
+					<h4 class="card-title">Maison 145 m2 Esquirol, Toulouse</h4>
+					<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. At adipisci sed provident quis nam quibusdam neque asperiores dolorum laborum itaque.</p>
+					<a href="#" class="btn btn-secondary">En savoir plus</a>
+				</div>
+
+
+			</div>
+
+
+		</div>
+
+		<div class="col-md-4">
+			<div class="card bg-light mb-3">
+				<div class="card-header text-center">
+					Maison, 145 m2, 5 chambres, Toulouse
+					<strong>390000€</strong>
+					<small>pas de commentaire</small>
+
+				</div>
+				<img src="http://place-hold.it/1000x400" alt="image du placehold" style="height: 200px; width:100%; display:block">
+
+				<div class="card-body">
+					<h4 class="card-title">Maison 145 m2 Esquirol, Toulouse</h4>
+					<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. At adipisci sed provident quis nam quibusdam neque asperiores dolorum laborum itaque.</p>
+					<a href="#" class="btn btn-secondary">En savoir plus</a>
+				</div>
+
+
+			</div>
+
+
+		</div>
+	</div>
+	<h2 class="h1 mb-3 mt-3">Nos propriétaires stars</h2>
+	<div class="row">
+		<div class="col">
+			<div class="card border-secondary mb-3">
+				<div class="card-body">
+					<h4 class="card-title">Lior Chamla</h4>
+
+					<hr>
+
+					<div class="card-text">
+						<img src="http://place-hold.it/64x64" alt="image avatar" class="float left mr-3">
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, odio?</p>
+
+						<a href="#" class="btn btn-success float-right">En savoir plus</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card border-secondary mb-3">
+				<div class="card-body">
+					<h4 class="card-title">Ahmed Ajijti</h4>
+
+					<hr>
+
+					<div class="card-text">
+						<img src="http://place-hold.it/64x64" alt="image avatar" class="float left mr-3">
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, odio?</p>
+
+						<a href="#" class="btn btn-success float-right">En savoir plus</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
