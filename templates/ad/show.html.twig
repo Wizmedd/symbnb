@@ -1,0 +1,76 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{ad.title}}
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 mb-3">
+
+
+				<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+					<div class="carousel-indicators">
+
+						{% for image in ad.images %}
+							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{loop.index0}}" {% if loop.first %} class="active" aria-current="true" {% endif %} aria-label="Slide{{ loop.index }}"></button>
+						{% endfor %}
+					</div>
+
+					<div class="carousel-inner">
+						{% for image in ad.images %}
+							<div class="carousel-item {% if loop.first %}active{% endif %}">
+								<img src="{{image.url}}" class="d-block w-100" alt="{{image.caption}}">
+								<div class="carousel-caption d-none d-md-block">
+									<h5>{{ad.title}}</h5>
+									<p>{{image.caption}}</p>
+								</div>
+
+							</div>
+						{% endfor %}
+
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+				{{ad.content | raw}}
+			</div>
+
+
+			<div class="col">
+				<div class="row">
+					<div class="col-4">
+						<img src="http://place-hold.it/64x64" alt="image avatar"></div>
+					<div class="col">
+						<h3>Mehdi Plaza</h3>
+						<span class="badge bg-primary">3 annonces</span>
+					</div>
+				</div>
+				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam ipsa inventore voluptate eum beatae, illo ducimus nam tenetur adipisci impedit.</p>
+				<p>Facilis quia voluptatum ullam veniam quas repellendus recusandae facere maxime dolores, perspiciatis labore, minus earum sequi repudiandae pariatur! Aut, delectus.</p>
+				<p>Ad odio cum iste inventore, natus itaque magnam numquam nobis quos consequuntur libero, error labore. Fuga quisquam optio assumenda vel.</p>
+			</div>
+		</div>
+	</div>
+	<div class="ad-title" style="background-image: url({{ ad.coverImage }})">
+		<div class="container">
+			<h1>{{ad.title}}</h1>
+			<p>{{ad.introduction}}</p>
+			<p class="h2">
+				<strong>{{ad.rooms}}
+					chambres ,
+					{{ad.price}}€</strong>
+			</p>
+			<a href="#" class="btn btn-primary">Visiter !</a>
+		</div>
+	</div>
+{% endblock %}
