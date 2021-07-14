@@ -47,17 +47,24 @@
 
 
 			<div class="col">
+
+				{% set a = ad.author %}
+
 				<div class="row">
-					<div class="col-4">
-						<img src="http://place-hold.it/64x64" alt="image avatar"></div>
+					<div class="col-3">
+						<a href="{{path('user_show',{'slug': a.slug})}}">
+							<img src="{{ a.picture }}" class="avatar avatar-medium" alt="avatar de {{a.firstName}} {{a.lastName}}"></div>
+					</a>
 					<div class="col">
-						<h3>Mehdi Plaza</h3>
-						<span class="badge bg-primary">3 annonces</span>
+						<a href="{{path('user_show',{'slug': a.slug})}}" style="text-decoration:none">
+							<h3>{{a.fullName}}
+							</h3>
+						</a>
+						<span class="badge bg-primary">{{a.ads | length}}
+							annonces</span>
 					</div>
 				</div>
-				<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam ipsa inventore voluptate eum beatae, illo ducimus nam tenetur adipisci impedit.</p>
-				<p>Facilis quia voluptatum ullam veniam quas repellendus recusandae facere maxime dolores, perspiciatis labore, minus earum sequi repudiandae pariatur! Aut, delectus.</p>
-				<p>Ad odio cum iste inventore, natus itaque magnam numquam nobis quos consequuntur libero, error labore. Fuga quisquam optio assumenda vel.</p>
+				{{ a.description | raw }}
 			</div>
 		</div>
 	</div>
