@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Ad;
 use Faker\Factory;
 //use Cocur\Slugify\Slugify;
+use App\Entity\Role;
 use App\Entity\User;
 use App\Entity\Image;
 use Doctrine\Persistence\ObjectManager;
@@ -28,6 +29,27 @@ class AppFixtures extends Fixture
 
 
         $faker = Factory::create("fr-FR");
+
+        //on crée un ROLE_ADMIN
+
+        $adminRole = new Role();
+        $adminRole->setTitle('ROLE_ADMIN');
+        $manager->persist($adminRole);
+
+        //On crée un ADMIN_USER
+
+        $adminUser = new User();
+        $adminUser->setFirstName('Mehdi')
+            ->setLastname('AJIJTI')
+            ->setEmail('mehdiajijti@hotmail.fr')
+            ->setPhone('0677461114')
+            ->setHash($this->encoder->encodePassword($adminUser, 'password'))
+            ->setIntroduction($faker->sentence())
+            ->setDescription('<p>' . join('</p><p>', $faker->paragraphs(3)) . '</p>')
+            ->setPicture('https://image-uviadeo.journaldunet.com/image/450/1957913301/2376083.jpg')
+            ->addUserRole($adminRole);
+
+        $manager->persist($adminUser);
 
         //Nous gérons les utilisateurs
         $users = [];
