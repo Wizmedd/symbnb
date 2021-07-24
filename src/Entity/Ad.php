@@ -104,9 +104,15 @@ class Ad
      */
     private $author;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Booking::class, mappedBy="ad")
+     */
+    private $bookings;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->bookings = new ArrayCollection();
     }
     /**
      * Permet d'initialiser le slug
@@ -119,6 +125,31 @@ class Ad
             $slugify = new Slugify();
             $this->slug = $slugify->slugify($this->title);
         }
+    }
+
+    /**
+     * Peremet d'obtenir un tableau des jours qui ne sont pas disponibles pour cette annonce
+     * retourne un tableau d'objets dateTime
+     */
+
+    public function getNotAvailableDays()
+    {
+        $notAvailableDays = [];
+        foreach ($this->bookings as $booking) {
+            //calculer les jours entre la date d'arrivée et la date de départ
+            $resultat = range(
+                $booking->getStartDate()->getTimestamp(),
+                $booking->getEndDate()->getTimestamp(),
+                24 * 60 * 60
+            );
+
+            $days = array_map(function ($dayTimestamp) {
+                return new \DateTime(date('Y-m-d', $dayTimestamp));
+            }, $resultat);
+
+            $notAvailableDays = array_merge($notAvailableDays, $days);
+        }
+        return $notAvailableDays;
     }
 
     public function getId(): ?int
@@ -308,6 +339,36 @@ class Ad
     public function setAuthor(?User $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Booking[]
+     */
+    public function getBookings(): Collection
+    {
+        return $this->bookings;
+    }
+
+    public function addBooking(Booking $booking): self
+    {
+        if (!$this->bookings->contains($booking)) {
+            $this->bookings[] = $booking;
+            $booking->setAd($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBooking(Booking $booking): self
+    {
+        if ($this->bookings->removeElement($booking)) {
+            // set the owning side to null (unless already changed)
+            if ($booking->getAd() === $this) {
+                $booking->setAd(null);
+            }
+        }
 
         return $this;
     }
