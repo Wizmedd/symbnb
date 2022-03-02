@@ -2,63 +2,33 @@
 
 {% block style %}
 	<!-- Intro settings -->
-	<style>
-		/* Default height for small devices */
-		#intro-example {
-			height: 400px;
-		}
 
-		/* Height for devices larger than 992px */
-		@media(min-width: 992px) {
-			#intro-example {
-				height: 600px;
-			}
-		}
-	</style>
 {% endblock %}
+
 {% block title %}Homepage
 {% endblock %}
 
 {% block body %}
 
 
-	<div
-		class="container">
-
-		<!-- Background image -->
-		<div id="intro-example" class="bg-light p-5 rounded-lg m-3" style="background-size:cover; background-image: url('/images/masthead.jpg'); background-position: center center;">
-
-			<div class="masthead" style="" ;>
-				<h1 class="display-3" style="margin-top:-50px; color: white; text-shadow: 3px 3px 3px rgba(0,0,0,0.5)">Faites vous une idée avant de visiter.</h1>
-
-				<hr class="my-4">
-				<hr class="my-4">
-				<hr class="my-4">
-				<hr class="my-4">
-				<hr class="my-4">
-				<hr class="my-4">
-				<hr class="my-4">
-				<p class="lead" style="background-color: rgba(0, 0, 0, 0.2); color: white; text-shadow: 3px 3px 3px rgba(0,0,0,0.5)">
-
-					ImmoStar est la plateforme de mise en relation immobilière</p>
-				<a style="" class="btn btn-primary btn-lg" href="{{ path('ads_index') }}" role="button">Voir nos annonces</a>
-			</div>
-
-			<div class="mask" style="background-color: rgba(0, 0, 0, 0.2);">
-				<div class="d-flex justify-content-center align-items-center h-100">
-					<div class="text-white">
-
-						<a class="btn btn-outline-light btn-lg m-3" href="https://www.youtube.com/watch?v=c9B4TPnak1A" role="button" rel="nofollow" target="_blank">Voir la vidéo</a>
-
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- Background image -->
+	<div class="container">
 
 
-		<h2 class="h1 mb-3 mt-3">Nos annonces stars</h2>
+		<map name="image-map">
+			<area target="" alt="Splendide Appartement 75m², Compans Caffarelli" title="Splendide Appartement 75m², Compans Caffarelli" href="" coords="379,285,15" shape="circle">
+			<area target="" alt="Appartement 65m² lumineux, Grand Rond" title="Appartement 65m² lumineux, Grand Rond" href="" coords="372,204,15" shape="circle">
+			<area target="" alt="Maisonnette 54m², Arnaud Bernard" title="Maisonnette 54m², Arnaud Bernard" href="" coords="623,270,11" shape="circle">
+			<area target="" alt="Maison" title="Maison" href="javascript:alert('Navigate to GOOGLE');" coords="875,301,10" shape="circle">
+			<area target="" alt="Maison" title="Maison" href="" coords="748,174,10" shape="circle">
+		</map>
+
+
+		<img src="/images/masthead.jpg" usemap="#image-map" class="d-block w-100" alt="">
+
+
+		<h2 class="h1 my-5">Nos annonces sur Toulouse</h2>
+		<div id="map" style="height:400px"></div>
+		<h2 class="h1 my-5">Nos annonces stars</h2>
 
 		<div class="row">
 			<div class="col-md-4">
@@ -128,7 +98,8 @@
 
 		</div>
 	</div>
-	<h2 class="h1 mb-3 mt-3">Nos propriétaires stars</h2>
+
+	<h2 class="h1 my-5">Nos agents indépendants stars</h2>
 	<div class="row">
 		<div class="col">
 			<div class="card border-secondary mb-3">
@@ -162,5 +133,13 @@
 				</div>
 			</div>
 		</div>
+
+
 	</div>
+
+
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+	<script src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js?v1.3.0"></script>
+	<script type='text/javascript' src='https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js'></script>
+	<script src="/js/home.js"></script>
 {% endblock %}

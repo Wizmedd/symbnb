@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
 use Cocur\Slugify\Slugify;
 use App\Repository\AdRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -109,10 +110,21 @@ class Ad
      */
     private $bookings;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="ad", orphanRemoval=true)
+     */
+    private $comments;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $coverVideo;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
         $this->bookings = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
     /**
      * Permet d'initialiser le slug
@@ -125,6 +137,36 @@ class Ad
             $slugify = new Slugify();
             $this->slug = $slugify->slugify($this->title);
         }
+    }
+    /**Permet de recuperer le commenataire d'un author par rapport a une annonce
+     * 
+     */
+    public function getCommentFromAuthor(User $author)
+    {
+
+        foreach ($this->comments as $comment) {
+            if ($comment->getAuthor() === $author) {
+                return $comment;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Permet d'obtenir la moyenne des commentaires d'une annonce
+     */
+    public function getAvgRatings()
+    {
+        //calcul de la somme des commentaires
+        $sum = array_reduce($this->comments->toArray(), function ($total, $comment) {
+            return $total + $comment->getRating();
+        }, 0);
+
+        //faire la division pour avoir la moyenne 
+
+        if (count($this->comments) > 0) return $sum / count($this->comments);
+
+        return 0;
     }
 
     /**
@@ -369,6 +411,48 @@ class Ad
                 $booking->setAd(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setAd($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->removeElement($comment)) {
+            // set the owning side to null (unless already changed)
+            if ($comment->getAd() === $this) {
+                $comment->setAd(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCoverVideo(): ?string
+    {
+        return $this->coverVideo;
+    }
+
+    public function setCoverVideo(?string $coverVideo): self
+    {
+        $this->coverVideo = $coverVideo;
 
         return $this;
     }

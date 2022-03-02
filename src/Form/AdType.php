@@ -37,6 +37,7 @@ class AdType extends ApplicationType
             ->add('price', MoneyType::class, $this->getConfiguration('Prix du bien', 'Indiquez le prix de vente de votre bien'))
             ->add('introduction', TextType::class, $this->getConfiguration('Introduction', 'Donnez une description globale et rapide de l\'annonce'))
             ->add('content', TextareaType::class, $this->getConfiguration('Description détaillée', 'Tapez une description détaillé de votre annonce'))
+            ->add('coverVideo', UrlType::class, $this->getConfiguration('Url de votre video', 'Donnez l\'adresse url de votre video'))
             ->add('coverImage', UrlType::class, $this->getConfiguration('Url de l\'image principale', 'Donnez une adresse d\'image qui donne envie'))
             ->add('rooms', IntegerType::class, $this->getConfiguration('Nombre de pièces', 'Indiquez le nombre de pièces disponibles'))
             ->add('latitude', NumberType::class, $this->getConfiguration('Latitude', 'Tapez une latitude (ex 43.6043 pour Toulouse)'))

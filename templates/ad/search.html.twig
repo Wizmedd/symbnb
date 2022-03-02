@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+{% block title %}rechercher une annonce
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="input-group mb-3">
+
+
+					<input type="text" id="champ-ville" class="form-control" placeholder="Taper votre ville" aria-label="Recherhcher votre ville" aria-describedby="basic-addon2">
+					<span class="input-group-text" id="basic-addon2">Rechercher</span>
+
+				</div>
+			</div>
+
+			<div class="col">
+						<div class="row">
+							<div class="col-8">
+								<input type="range" class="form-range" min="1" max="30" id="champ-distance">
+							</div>
+							<div class="col"><div class="row"><div class="col"><label for="champ-distance" class="form-label">Distance: <strong id="valeur-distance"></strong></label></div>
+							</div>
+								
+							</div>
+						</div>		
+
+				
+		
+			</div>
+		</div>
+		
+		
+	</div>
+	<div id="map" style="height:400px"></div>
+
+
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+	<script src="/js/search.js"></script>
+{% endblock %}

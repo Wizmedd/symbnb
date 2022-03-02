@@ -11,38 +11,84 @@
 		<div class="row">
 			<div class="col-md-8 mb-3">
 
+				{% if  ad.coverVideo == null %}
 
-				<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-					<div class="carousel-indicators">
+					<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-indicators">
 
-						{% for image in ad.images %}
-							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{loop.index0}}" {% if loop.first %} class="active" aria-current="true" {% endif %} aria-label="Slide{{ loop.index }}"></button>
-						{% endfor %}
-					</div>
+							{% for image in ad.images %}
+								<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{loop.index0}}" {% if loop.first %} class="active" aria-current="true" {% endif %} aria-label="Slide{{ loop.index }}"></button>
+							{% endfor %}
+						</div>
 
-					<div class="carousel-inner">
-						{% for image in ad.images %}
-							<div class="carousel-item {% if loop.first %}active{% endif %}">
-								<img src="{{image.url}}" class="d-block w-100" alt="{{image.caption}}">
-								<div class="carousel-caption d-none d-md-block">
-									<h5>{{ad.title}}</h5>
-									<p>{{image.caption}}</p>
+						<div class="carousel-inner">
+							{% for image in ad.images %}
+								<div class="carousel-item {% if loop.first %}active{% endif %}">
+									<img src="{{image.url}}" class="d-block w-100" alt="{{image.caption}}">
+									<div class="carousel-caption d-none d-md-block">
+										<h5>{{ad.title}}</h5>
+										<p>{{image.caption}}</p>
+									</div>
+
 								</div>
+							{% endfor %}
 
-							</div>
-						{% endfor %}
-
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
 					</div>
-					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Previous</span>
-					</button>
-					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Next</span>
-					</button>
-				</div>
+				{% else %}
+					<div class="video-container">
+						<div class="video-foreground">
+							{{ad.coverVideo|video_player|raw}}
+						</div>
+					</div>
+
+				{% endif %}
 				{{ad.content | raw}}
+				<hr>
+				{% if ad.comments|length >0 %}
+					<h2 class="mb-3">Commentaires de nos utilisateurs:
+					</h2>
+					<div class="alert alert-info">
+						<h4 class="alert alert-heading text-center">
+							<div class="row align-items-center">
+								<div class="col">Note globale donnée par nos utilisateurs
+
+
+								</div>
+								<div class="col">
+									{% include '/partials/rating.html.twig' with {'rating': ad.avgRatings} %}
+									<br>
+									<small>Moyenne calculé sur
+										{{ ad.comments|length }}
+										avis.</small>
+								</div>
+							</div>
+						</h4>
+					</div>
+					{% for comment in ad.comments %}
+						<div class="bg-light rounded py-3 px-3">
+							<strong>{{comment.author.firstName}}
+							</strong>
+							a dit:
+							<blockquote>
+								{{comment.content}}
+							</blockquote>
+							Note :
+							{% include '/partials/rating.html.twig' with {'rating': comment.rating} %}
+
+						</div>
+					{% endfor %}
+				{% else %}
+					<h2>Cette annonce n'as pas encore reçu de commentaire.</h2>
+				{% endif %}
 			</div>
 
 
@@ -75,7 +121,7 @@
 			<p class="h2">
 				<strong>{{ad.rooms}}
 					chambres ,
-					{{ad.price}}€</strong>
+					{{ad.price|number_format(0,',',' ')}}&euro;</strong>
 			</p>
 			<a href="{{path('booking_create', {'slug':ad.slug})}}" class="btn btn-primary">Réserver un séjour !</a>
 

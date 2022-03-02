@@ -34,6 +34,33 @@ class AdController extends AbstractController
         ]);
     }
 
+    /**
+     * On veut créer une liste des annonces avec une carte OSM
+     * * @Route("/ads/map", name="ads_map")
+     */
+    public function map(AdRepository $repo)
+    {
+        $ads = $repo->findAll();
+
+        return $this->render('ad/map.html.twig', [
+            'ads' => $ads
+        ]);
+    }
+
+    /**
+     * On veut créer  une carte OSM avec une fonction rechercher
+     * * @Route("/ads/search", name="ads_search")
+     */
+    public function search(AdRepository $repo)
+    {
+        $ads = $repo->findAll();
+
+        return $this->render('ad/search.html.twig', [
+            'ads' => $ads
+        ]);
+    }
+
+
     //on veut créer une nouvelle annonce 
     //(on le place avant la function ads_show sinon pb ParamConverter)
     /**
