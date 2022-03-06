@@ -1,9 +1,16 @@
 
+
+
+
+
 var carte = null;
 var markerClusters; // Servira à stocker les groupes de marqueurs
 // Nous initialisons une liste de marqueurs
 
 window.onload = () => {
+
+
+
 
     var markers = []; // Nous initialisons la liste des marqueurs
 

@@ -1,0 +1,75 @@
+
+
+/* Relative positioning*/
+#image-map {
+    position: relative ;
+    margin: auto auto 20px auto;
+}
+
+/* Hide the original infobulles contents */
+.pin {
+    display: none;
+}
+
+/* Begin styling the infobulles and pins */
+.infobulle-up, .infobulle-down {
+    position: absolute;
+    background: url('../images/icon_home_video.png');
+    width: 52px;
+    height: 45px;
+}
+
+.infobulle-down {
+    background-position: 0 -45px;
+}
+
+.infobulle {
+    display: none;
+    width: 300px;
+    cursor: help;
+    text-shadow: 0 1px 0 #fff;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    z-index: 999;
+    margin-left: -115px;
+    padding:15px;
+    color: #222;
+    border-radius: 5px;
+    box-shadow: 0 3px 0 rgba(0,0,0,.7);
+    background: white;     
+}
+
+.infobulle::after {
+    content: '';
+    position: absolute ;
+    top: -10px;
+    left: 50%;
+    margin-left: -10px;
+    border-bottom: 10px solid #fff1d3;
+    border-left: 10px solid transparent;
+    border-right : 10px solid transparent;
+}
+
+.infobulle-down .infobulle {
+    bottom: 12px;
+    top: auto;
+}
+
+.infobulle-down .infobulle::after {
+    bottom: -10px;
+    top: auto;
+    border-bottom: 0;
+    border-top: 10px solid #ffdb90;
+}
+
+.infobulle h2 {
+    font: bold 1.3em 'Trebuchet MS', Tahoma, Arial;
+    margin: 0 0 10px;
+}
+
+.infobulle ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}

@@ -1,64 +1,161 @@
 {% extends "base.html.twig" %}
 
-{% block style %}
-	<!-- Intro settings -->
-
-{% endblock %}
+{% block style %}{% endblock %}
 
 {% block title %}Homepage
 {% endblock %}
 
 {% block body %}
+	<div
+		class="container">
 
 
-	<div class="container">
+		<!-- partial:index.partial.html -->
+		<div id="image-map">
+			<img width="960" height="640" class="d-block w-100" src="https://static.actu.fr/uploads/2021/10/toulouse-960x640.jpg" alt="Our Locations">
+			<div class="card bg-light mb-3">
+				<div class="pin pin-down" data-xpos="500" data-ypos="375">
+					<div class="card bg-light mb-3">
+
+						<h4 class="card-title">
+							<a href="/ads/architecto-qui-est-ipsum-facere-fuga-voluptatem-ut" style="text-decoration:none">Appartement, 75m²</a>
+						</h4>
+
+						<img src="./images/toulouse.jpg" alt="" style="height: 160px; width:100%; display:block">
+						<ul>
+
+							<li>
+								<strong>Toulouse: 31000</strong>
+							</li>
+							<li>Quartier: La colombelle</li>
+							<li>Etage: 3/3</li>
+							<li>Séjour: 30 m²</li>
+							<li>Nbre(s) de pièces: 4</li>
 
 
-		<map name="image-map">
-			<area target="" alt="Splendide Appartement 75m², Compans Caffarelli" title="Splendide Appartement 75m², Compans Caffarelli" href="" coords="379,285,15" shape="circle">
-			<area target="" alt="Appartement 65m² lumineux, Grand Rond" title="Appartement 65m² lumineux, Grand Rond" href="" coords="372,204,15" shape="circle">
-			<area target="" alt="Maisonnette 54m², Arnaud Bernard" title="Maisonnette 54m², Arnaud Bernard" href="" coords="623,270,11" shape="circle">
-			<area target="" alt="Maison" title="Maison" href="javascript:alert('Navigate to GOOGLE');" coords="875,301,10" shape="circle">
-			<area target="" alt="Maison" title="Maison" href="" coords="748,174,10" shape="circle">
-		</map>
+						</li>
 
+					</ul>
+					<a href="/ads/odio-optio-temporibus-ullam-odio-voluptatem" class="btn btn-primary btn-block">En savoir plus</a>
 
-		<img src="/images/masthead.jpg" usemap="#image-map" class="d-block w-100" alt="">
+				</div>
+			</div>
+			<div class="pin pin-down" data-xpos="215" data-ypos="175">
+				<h2>Ambergrove Place</h2>
+				<a href="/ads/dolor-iure-quia-quisquam-voluptatibus-quaerat-dolorem-qui">
+					<img src="https://loremflickr.com/320/240?random=1" alt="image du placehold" style="height: 160px; width:100%; display:block">
+				</a>
+				<ul>
+					<li>
+						<strong>123 Street Address</strong>
+					</li>
+					<li>City, ST, 12345</li>
+					<li>
+						<strong>(555) 555-5555</strong>
+					</li>
+					<li>
+						<a href="#" target="_blank">Website</a>
+					</li>
+					<li>Coming in Spring 2015</li>
+				</ul>
+			</div>
+			<div class="pin pin-down" data-xpos="255" data-ypos="365">
+				<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+					<div class="carousel-indicators">
 
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="" aria-label="Slide1"></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide2" class=""></button>
+						<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide3" class="active" aria-current="true"></button>
+					</div>
 
-		<h2 class="h1 my-5">Nos annonces sur Toulouse</h2>
-		<div id="map" style="height:400px"></div>
-		<h2 class="h1 my-5">Nos annonces stars</h2>
+					<div class="carousel-inner">
+						<div class="carousel-item">
+							<img src="https://mapetiteagence.com/imgfr/boutique/3_terrasse-panorama-1.jpg" class="d-block w-100" alt="Magnifique terasse">
+							<div class="carousel-caption d-none d-md-block">
+								<h5></h5>
+								<p>Magnifique terasse</p>
+							</div>
 
-		<div class="row">
-			<div class="col-md-4">
-				<div class="card bg-light mb-3">
-					<div class="card-header text-center">
-						Appartement, 145 m2, 5 chambres, Toulouse
-						<strong>290000€</strong>
-						<small>pas de commentaire</small>
+						</div>
+						<div class="carousel-item active carousel-item-start">
+							<img src="https://lh3.googleusercontent.com/uIBDgUvgpadqbTXNudyH6guCmwwk4bKq5Z3JFItUP3CHUtV9CTNOPWJArc6-JWXww874GAbtWLeb-U6rPIHrNWAQ=rj-w1340-h785-n-l80" class="d-block w-100" alt="Large séjour lumineux">
+							<div class="carousel-caption d-none d-md-block">
+								<h5></h5>
+								<p>Large séjour lumineux</p>
+							</div>
+
+						</div>
+						<div class="carousel-item carousel-item-next carousel-item-start">
+							<img src="https://medias.immovision.com/photos/p0/16394/207001.jpg" class="d-block w-100" alt="Comble aménagé en verrière">
+							<div class="carousel-caption d-none d-md-block">
+								<h5>Appartement traversant dernier étage</h5>
+								<p>Comble aménagé en verrière</p>
+							</div>
+
+						</div>
 
 					</div>
-					<img src="http://place-hold.it/1000x400" alt="image du placehold" style="height: 200px; width:100%; display:block">
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+				<h2>Chelsea Place</h2>
+				<ul>
+					<li>
+						<strong>123 Street Address</strong>
+					</li>
+					<li>City, ST, 12345</li>
+					<li>
+						<strong>(555) 555-5555</strong>
+					</li>
+					<li>
+						<a href="#" target="_blank">Website</a>
+					</li>
+					<li>Coming in Spring 2015</li>
+				</ul>
+			</div>
+		</div>
 
-					<div class="card-body">
-						<h4 class="card-title">Maison 145 m2 Esquirol, Toulouse</h4>
-						<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. At adipisci sed provident quis nam quibusdam neque asperiores dolorum laborum itaque.</p>
-						<a href="#" class="btn btn-secondary">En savoir plus</a>
-					</div>
 
+	</div>
+	<h2 class="h1 my-5">Nos annonces sur Toulouse</h2>
+	<div id="map" style="height:400px"></div>
+	<h2 class="h1 my-5">Nos annonces stars</h2>
 
+	<div class="row">
+		<div class="col-md-4">
+			<div class="card bg-light mb-3">
+				<div class="card-header text-center">
+					Appartement, 145 m2, 5 chambres, Toulouse
+					<strong>290000€</strong>
+					<small>pas de commentaire</small>
+
+				</div>
+				<img src="http://place-hold.it/1000x400" alt="image du placehold" style="height: 200px; width:100%; display:block">
+
+				<div class="card-body">
+					<h4 class="card-title">Maison 145 m2 Esquirol, Toulouse</h4>
+					<p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. At adipisci sed provident quis nam quibusdam neque asperiores dolorum laborum itaque.</p>
+					<a href="#" class="btn btn-secondary">En savoir plus</a>
 				</div>
 
 
 			</div>
 
-			<div class="col-md-4">
-				<div class="card bg-light mb-3">
-					<div class="card-header text-center">
-						Maison, 145 m2, 5 chambres, Toulouse
-						<strong>390000€</strong>
-					</br>
+
+		</div>
+
+		<div class="col-md-4">
+			<div class="card bg-light mb-3">
+				<div class="card-header text-center">
+					Maison, 145 m2, 5 chambres, Toulouse
+					<strong>390000€</strong>
+
 					<small>pas de commentaire</small>
 
 				</div>
@@ -142,4 +239,6 @@
 	<script src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js?v1.3.0"></script>
 	<script type='text/javascript' src='https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js'></script>
 	<script src="/js/home.js"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src="/js/script.js"></script>
 {% endblock %}
