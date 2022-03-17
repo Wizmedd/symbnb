@@ -2,8 +2,10 @@
 
 /* Relative positioning*/
 #image-map {
+   
     position: relative ;
     margin: auto auto 20px auto;
+    
 }
 
 /* Hide the original infobulles contents */
@@ -12,11 +14,24 @@
 }
 
 /* Begin styling the infobulles and pins */
-.infobulle-up, .infobulle-down {
+.infobulle-down {
     position: absolute;
     background: url('../images/icon_home_video.png');
     width: 52px;
     height: 45px;
+}
+.infobulle-up {
+    position: absolute;
+    background: url('../images/land.png');
+    width: 32px;
+    height: 34px;
+}
+
+.infobulle-right {
+    position: absolute;
+    background: url('../images/appart.png');
+    width: 32px;
+    height: 34px;
 }
 
 .infobulle-down {

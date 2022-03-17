@@ -10,7 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     // // On récupère les données dans la base
 
-    $sql = "SELECT * FROM `ad`";
+    $sql =  "SELECT id, price, title, latitude, longitude, cover_image, slug FROM `ad`";
+
 
     $query = $db->prepare($sql);
 

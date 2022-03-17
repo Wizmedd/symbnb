@@ -13,7 +13,10 @@ $(document).ready(function () {
         // set infobulle direction type - up or down             
         if ($(".pin").eq(i).hasClass('pin-down')) {
             infobulleDirection = 'infobulle-down';
-        } else {
+        } else if ($(".pin").eq(i).hasClass('pin-right')) {
+            infobulleDirection = 'infobulle-right';
+        }
+        else {
             infobulleDirection = 'infobulle-up';
         }
 
@@ -24,7 +27,7 @@ $(document).ready(function () {
     }
 
     // show/hide the infobulle
-    $('.infobulle-up, .infobulle-down').mouseenter(function () {
+    $('.infobulle-up, .infobulle-down, .infobulle-right').mouseenter(function () {
         $(this).children('.infobulle').fadeIn(100);
     }).mouseleave(function () {
         $(this).children('.infobulle').fadeOut(100);

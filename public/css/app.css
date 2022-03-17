@@ -47,6 +47,10 @@ div.ad-title {
     min-width: 24px;
     max-height: 24px;
 }
+.avatar-micro {
+    min-width: 22px;
+    max-height: 22px;
+}
 
 .datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
     color: firebrick !important;
@@ -256,3 +260,35 @@ span.rating i{
   .player .vp-outro-videosSection:last-child {
     display:none;
 }
+.jumbotron{
+    margin:0px 0px 0px 0px;
+    border-radius:10px;
+      background: 
+  linear-gradient(
+    rgba(0, 0, 250, 0.25), 
+    rgba(125, 250, 250, 0.45)
+  ),
+  url(https://source.unsplash.com/1600x1050/?nature);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color:white !important;
+  height:340px;
+  }
+  
+  .page-scroll{
+    height:5000px;
+  }
+  
+  .btn-outline-danger{
+    color:white;
+    border-color:white;
+    border-radius:0px;
+    font-weight:100;
+    margin-top:20px;
+  }
+  .lead{
+    font-family:raleway;
+    font-weight:100;
+    margin-top:-0px;
+    text-shadow: 3px 3px 3px rgba(0,0,0,0.12);
+  }

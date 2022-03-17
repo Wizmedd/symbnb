@@ -42,7 +42,10 @@ window.onload = () => {
 
 
             // On convertit la réponse en objet Javascript
+
+
             let donnees = JSON.parse(reponse);
+
 
             // On boucle sur les données (ES8)
             Object.entries(donnees).forEach(agence => {
@@ -69,18 +72,42 @@ window.onload = () => {
                     //shadowAnchor: [4, 62],  // the same for the shadow
                     popupAnchor: [8, -6] // point from which the popup should open relative to the iconAnchor
                 });
+                var landIcon = L.icon({
+                    iconUrl: '/images/land.png',
+                    //shadowUrl: '/images/leaf-shadow.png',
+
+                    iconSize: [36, 38], // size of the icon
+                    //shadowSize: [50, 64], // size of the shadow
+                    iconAnchor: [0, 38], // point of the icon which will correspond to marker's location
+                    //shadowAnchor: [4, 62],  // the same for the shadow
+                    popupAnchor: [8, -6] // point from which the popup should open relative to the iconAnchor
+                });
                 // On crée un marqueur pour l'agence
-                if (agence[1].price > 300) {
+                if (agence[1].price > 600) {
+                    // faire quelque chose
                     var marker = L.marker([agence[1].latitude, agence[1].longitude], { icon: houseIcon });
                     marker.bindPopup(agence[1].title + "<img style=\"max-height: 300px; width:100%\" src=\"" + agence[1].cover_image + "\">" + "</br>" + "<a href=/ads/" + agence[1].slug + " class=\"btn btn-primary float-end\" >En savoir plus</a>")
                     markerClusters.addLayer(marker); // Nous ajoutons le marqueur aux groupes
                     markers.push(marker); // Nous ajoutons le marqueur à la liste des marqueurs
-                } else
+
+                } else if (agence[1].price > 300) {
+                    // faire autre chose
                     var marker = L.marker([agence[1].latitude, agence[1].longitude], { icon: appartIcon });
-                marker.bindPopup(agence[1].title + "<img style=\"max-height: 300px; width:100%\" src=\"" + agence[1].cover_image + "\">" + "</br>" + "<a href=/ads/" + agence[1].slug + " class=\"btn btn-primary float-end\" >En savoir plus</a>")
-                markerClusters.addLayer(marker); // Nous ajoutons le marqueur aux groupes
-                markers.push(marker); // Nous ajoutons le marqueur à la liste des marqueurs
+                    marker.bindPopup(agence[1].title + "<img style=\"max-height: 300px; width:100%\" src=\"" + agence[1].cover_image + "\">" + "</br>" + "<a href=/ads/" + agence[1].slug + " class=\"btn btn-primary float-end\" >En savoir plus</a>")
+                    markerClusters.addLayer(marker); // Nous ajoutons le marqueur aux groupes
+                    markers.push(marker); // Nous ajoutons le marqueur à la liste des marqueurs
+                } else {
+                    // faire encore autre chose
+                    var marker = L.marker([agence[1].latitude, agence[1].longitude], { icon: landIcon });
+                    marker.bindPopup(agence[1].title + "<img style=\"max-height: 300px; width:100%\" src=\"" + agence[1].cover_image + "\">" + "</br>" + "<a href=/ads/" + agence[1].slug + " class=\"btn btn-primary float-end\" >En savoir plus</a>")
+                    markerClusters.addLayer(marker); // Nous ajoutons le marqueur aux groupes
+                    markers.push(marker); // Nous ajoutons le marqueur à la liste des marqueurs
+                }
             })
+
+
+
+
             var group = new L.featureGroup(markers); // Nous créons le groupe des marqueurs pour adapter le zoom
             carte.fitBounds(group.getBounds().pad(0.5)); // Nous demandons à ce que tous les marqueurs soient visibles, et ajoutons un padding (pad(0.5)) pour que les marqueurs ne soient pas coupés
             carte.addLayer(markerClusters);
