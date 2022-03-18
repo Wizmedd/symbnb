@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nos magnifiques annonces!
+{% block title %}
+	Liste de nos annonces -
 {% endblock %}
 
 {% block body %}
@@ -9,10 +10,10 @@
 
 
 		<div class="row">
-			{% for ad in ads %}
+			{% for ad in pagination.data %}
 				{% include 'ad/_ad.html.twig' %}
 			{% endfor %}
 		</div>
-
+		{{ pagination.display() }}
 	</div>
 {% endblock %}

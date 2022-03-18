@@ -6,8 +6,7 @@ use App\Entity\Ad;
 use App\Form\AdType;
 use App\Entity\Image;
 use App\Repository\AdRepository;
-use Doctrine\Persistence\ObjectManager;
-// use Doctrine\Persistence\ObjectManager;
+use App\Service\PaginationService;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,16 +20,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class AdController extends AbstractController
 {
     /**
-     * @Route("/ads", name="ads_index")
+     * @Route("/ads/{page<\d+>?1}", name="ads_index")
      */
-    public function index(AdRepository $repo)
+    public function index(AdRepository $repo, $page, PaginationService $pagination)
     {
-        //plus besoin d'utiliser get repository grace à l'injection de dépendances
-        //$repo = $this->getDoctrine()->getRepository(Ad::class);
+        $pagination->setEntityClass(Ad::class)
+            ->setPage($page);
+
+
+
         $ads = $repo->findAll();
 
         return $this->render('ad/index.html.twig', [
-            'ads' => $ads
+            'pagination' => $pagination
         ]);
     }
 
